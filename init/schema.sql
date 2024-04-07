@@ -12,12 +12,17 @@ CREATE TABLE "attendees"(
     "email" TEXT NOT NULL,
     "event_id" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "attendees_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events" ('')
-)
+    CONSTRAINT "attendees_event_id_fkey" FOREIGN KEY ("event_id") REFERENCES "events" ('id') ON DELETE RESTRICT ON UPDATE CASCADE
+);
 
 CREATE TABLE "check_ins"(
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "atendeeID" TEXT NOT NULL,
-    CONSTRAINT "check_ins_attendeeId_fkey" FOREIGN KEY ("attendeeId") REFERENCES "attendeeId"
-)
+    CONSTRAINT "check_ins_attendeeId_fkey" FOREIGN KEY ("attendeeId") REFERENCES "attendeeId" ('id') ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+
+CREATE UNIQUE INDEX "events_slug_key" ON "events"("slug");
+CREATE UNIQUE INDEX "attendees_event_id_email_key" ON "attendees"("event_id", "email");
+CREATE UNIQUE INDEX "check_ins_attendeesId_key" ON "check_ins"("attendeesId");
