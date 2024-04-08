@@ -1,6 +1,7 @@
 from src.models.settings.base import Base
 from sqlalchemy import String, Integer, Column
 
+## Criação da tabela events com as respectivas colunas
 
 class Events(Base):
     __tablename__ = "events"
