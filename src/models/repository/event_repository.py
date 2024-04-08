@@ -8,7 +8,7 @@ class EventRepository():
             event = Events(
                 id=eventinfo.get("uuid"),
                 title=eventinfo.get("title"),
-                detail=eventinfo.get("detail"),
+                details=eventinfo.get("details"),
                 slug=eventinfo.get("slug"),
                 maximum_attendees= eventinfo.get("maximum_attendees")
             )
@@ -17,3 +17,13 @@ class EventRepository():
             database.session.commit()
             
             return eventinfo
+    
+    def get_event_by_id(self, event_id: str) -> Events:
+        with db_connection_handler as database:
+            event = (
+                database.session
+                .query(Events)
+                .filter(Events.id==event_id)
+                .one()
+            )
+            return event
