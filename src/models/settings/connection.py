@@ -3,14 +3,14 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-class DBConnectionHandler:
+class __DBConnectionHandler:
     def __init__(self) -> None:
         self.connection_string = "{}:///{}".format(
             "sqlite",
             "storage.db"
         ) 
         self.__engine = None
-        self.__session = None
+        self.session = None
     def connector_db(self) -> None:
         self.__engine = create_engine(self.connection_string)
 
@@ -19,9 +19,10 @@ class DBConnectionHandler:
     
     def __enter__(self):
         session_maker = sessionmaker()
-        self.__session = session_maker(bind=self.__engine)
+        self.session = session_maker(bind=self.__engine)
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        self.__session.close()
-        self.__engine.dispose()
+        self.session.close()
+
+db_connection_handler = __DBConnectionHandler()
