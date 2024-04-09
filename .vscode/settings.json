@@ -3,5 +3,14 @@
         "**/*.pyc": {"when": "$(basename).py"},
         "**/__pycache": true,
         "**/*.pytest_cache": true
-    }
+    },
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./src",
+        "-p",
+        "*_test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
 }

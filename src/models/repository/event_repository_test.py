@@ -20,10 +20,11 @@ def test_insert_event():
     response = events_repository.insert_event(event) 
     print(response)
 
-
+#@pytest.mark.skip(reason="Não quero retornar os dados outra vez")
 def test_get_event_by_id():
     event_id = "943558106"
     event_repository = EventRepository()
     response = event_repository.get_event_by_id(event_id)
 
     print(response)
+    print(response.title)
