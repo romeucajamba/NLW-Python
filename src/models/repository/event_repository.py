@@ -1,7 +1,7 @@
 from typing import Dict
 from src.models.settings.connection import db_connection_handler
 from src.models.entities.events import Events
-from sqlalchemy.exc import IdentifierError
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm.exc import NoResultFound
 
 class EventRepository():
@@ -20,7 +20,7 @@ class EventRepository():
                 database.session.commit()
             
                 return eventinfo
-           except IdentifierError:
+           except IntegrityError:
                raise Exception("Evento já cadastrado")
            
            except Exception as exception:
