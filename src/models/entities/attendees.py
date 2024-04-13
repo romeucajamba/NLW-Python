@@ -12,9 +12,9 @@ class Attendees(Base):
     created_at = Column(DateTime, nullable=False, default=func.now())
 
     def __repr__(self):
-        return f" Attendees [
+        return f""" Attendees [
             nome = {self.name},
             email = {self.email},
             event = {self.event},
             created_at = {self.created_at},
-        ]"
+        ]"""
