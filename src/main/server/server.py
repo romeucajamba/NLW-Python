@@ -3,6 +3,7 @@ from flask_cors import CORS
 from src.main.routes.events_route import event_route_bp
 from src.models.settings.connection import db_connection_handler
 from src.main.routes.attendees_route import attendees_route_bp
+from src.main.routes.check_in_route import check_in_route_bp
 
 
 db_connection_handler.connector_db()
@@ -12,3 +13,4 @@ CORS(app)
 
 app.register_blueprint(event_route_bp)
 app.register_blueprint(attendees_route_bp)
+app.register_blueprint(check_in_route_bp)
