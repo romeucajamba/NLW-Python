@@ -24,4 +24,3 @@ O participante só pode realizar check-in em um evento uma única vez;
 O check-in no evento será realizado através de um QRCode 
 
 ## Documentação da API(Swagge) ##
-Para a documentação da API, acesse o link https://nlw-unite-nodejs.onrender.com/docs
